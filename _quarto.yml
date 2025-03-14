@@ -1,5 +1,30 @@
 project:
-  title: "2025-SC-Parallel"
+  type: book
+  render:
+  - index.qmd
+  - parallel.qmd
+  output-dir: docs
+number-depth: 0
+book:
+  title: Statistical Computing Practical
+  sidebar:
+    border: true
+    background: light
+    position: right
+  navbar:
+    search: true
+    background: light
+  chapters:
+  - index.qmd
+  - parallel.qmd
+format:
+  html:
+    theme: lux
+    toc: true
+    toc-depth: 3
+    toc-location: left
+    
+  
 
 
 

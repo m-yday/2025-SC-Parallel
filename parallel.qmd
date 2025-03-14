@@ -1,0 +1,19 @@
+---
+title: "Parallel"
+format: html
+date: last-modified
+---
+
+# Question 1
+
+```{r}
+
+```
+
+# Question 2
+
+# Question 3
+
+# Question 4
+
+# Question 5
