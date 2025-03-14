@@ -2,17 +2,102 @@
 title: "Parallel"
 format: html
 date: last-modified
+execute: 
+  warning: false
+
+  
 ---
+
+```{r}
+# library(quarto)
+# library(projrsimple)
+# library(remotes)
+library(tidyverse)
+library(foreach)
+library(doParallel)
+library(knitr)
+```
 
 # Question 1
 
 ```{r}
-
+n1 <- 100 # sample size
+ 
+foreach(i=1:100, .combine = "rbind") %do% {
+  samp <- rexp(n1,1)
+  cbind(mean=mean(samp), variance=var(samp))
+} |> round(3) |> head(10) |> 
+  kable(caption = "First 10 of 100 sets of the measured bootstrap statistics.")
 ```
 
 # Question 2
 
+Sequential results:
+```{r}
+n2 <- 50 # bootstrap sample size
+b2 <- 1000 # bootstraps per iteration
+iter <- 100 # iterations
+
+#num of cores to use in parallelisation.
+cores <- detectCores() - 1 # leaves one core idle, to minimise system slowdowns
+
+boot_q2 <- function(){
+  sample(x=galaxies,size=n2,replace=T) |> median()
+}
+
+# sequential
+t2_seq <- system.time(
+  foreach(i=1:iter,.packages = 'MASS',.combine='c') %do% {
+    replicate(b2,boot_q2())
+  })
+
+#create parallel cluster
+cl <- makeCluster(cores) 
+registerDoParallel(cl)
+
+# parallel
+t2_par <- system.time({
+  foreach(i=1:iter,.packages = c('MASS'),.combine='c') %dopar% {
+    replicate(b2,boot_q2())
+  }})
+
+#close parallel cluster
+stopCluster(cl)
+```
+
+
+```{r, fig}
+rbind("Sequential"=t2_seq[1:3],
+      "Parallel"=t2_par[1:3]) |>
+  kable(
+    caption="Execution times for finding 100,000 bootstrapped medians.",
+    col.names=c("User", "System", "Total Elapsed"),
+    row.names=1)
+```
+
+
 # Question 3
+
+```{r}
+B3 <- 50
+iter3 <- 100
+sample3 <- rexp(B3,1)
+
+cl <- makeCluster(cores) 
+registerDoParallel(cl)
+clusterExport(cl=cl, varlist=c("sample3","B3"))
+
+bootstrap3 <- foreach(
+  i=1:iter3, 
+  .combine=("rbind")
+  ) %dopar% {
+    sample(x=sample3,size=B3,replace=T) |> 
+      sort()
+}
+stopCluster(cl)
+
+
+```
 
 # Question 4
 

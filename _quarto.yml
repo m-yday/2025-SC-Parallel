@@ -6,7 +6,7 @@ project:
   output-dir: docs
 number-depth: 0
 book:
-  title: Statistical Computing Practical
+  title: Statistical Computing Practicals
   sidebar:
     border: true
     background: light

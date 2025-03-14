@@ -2,7 +2,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Statistical Computing Practical",
+    "title": "Statistical Computing Practicals",
     "section": "",
     "text": "Welcome!\nHello :)",
     "crumbs": [
@@ -12,11 +12,11 @@
   {
     "objectID": "parallel.html",
     "href": "parallel.html",
-    "title": "2  parallel",
+    "title": "1  Parallel",
     "section": "",
-    "text": "3 Question 1\n\n\n4 Question 2\n\n\n5 Question 3\n\n\n6 Question 4\n\n\n7 Question 5",
+    "text": "# library(quarto)\n# library(projrsimple)\n# library(remotes)\nlibrary(tidyverse)\nlibrary(foreach)\nlibrary(doParallel)\nlibrary(knitr)\n\n\nQuestion 1\n\nn1 &lt;- 100 # sample size\n \nforeach(i=1:100, .combine = \"rbind\") %do% {\n  samp &lt;- rexp(n1,1)\n  cbind(mean=mean(samp), variance=var(samp))\n} |&gt; round(3) |&gt; head(10) |&gt; \n  kable(caption = \"First 10 of 100 sets of the measured bootstrap statistics.\")\n\n\nFirst 10 of 100 sets of the measured bootstrap statistics.\n\n\nmean\nvariance\n\n\n\n\n1.129\n1.519\n\n\n1.087\n1.261\n\n\n1.005\n0.969\n\n\n0.968\n0.930\n\n\n0.941\n1.251\n\n\n0.882\n0.516\n\n\n0.972\n0.634\n\n\n1.258\n1.776\n\n\n0.867\n0.734\n\n\n1.055\n1.280\n\n\n\n\n\n\n\nQuestion 2\nSequential results:\n\nn2 &lt;- 50 # bootstrap sample size\nb2 &lt;- 1000 # bootstraps per iteration\niter &lt;- 100 # iterations\n\n#num of cores to use in parallelisation.\ncores &lt;- detectCores() - 1 # leaves one core idle, to minimise system slowdowns\n\nboot_q2 &lt;- function(){\n  sample(x=galaxies,size=n2,replace=T) |&gt; median()\n}\n\n# sequential\nt2_seq &lt;- system.time(\n  foreach(i=1:iter,.packages = 'MASS',.combine='c') %do% {\n    replicate(b2,boot_q2())\n  })\n\n#create parallel cluster\ncl &lt;- makeCluster(cores) \nregisterDoParallel(cl)\n\n# parallel\nt2_par &lt;- system.time({\n  foreach(i=1:iter,.packages = c('MASS'),.combine='c') %dopar% {\n    replicate(b2,boot_q2())\n  }})\n\n#close parallel cluster\nstopCluster(cl)\n\n\nrbind(\"Sequential\"=t2_seq[1:3],\n      \"Parallel\"=t2_par[1:3]) |&gt;\n  kable(\n    caption=\"Execution times for finding 100,000 bootstrapped medians.\",\n    col.names=c(\"User\", \"System\", \"Total Elapsed\"),\n    row.names=1)\n\n\nExecution times for finding 100,000 bootstrapped medians.\n\n\n\nUser\nSystem\nTotal Elapsed\n\n\n\n\nSequential\n1.302\n0.014\n1.318\n\n\nParallel\n0.019\n0.005\n0.173\n\n\n\n\n\n\n\nQuestion 3\n\n\nQuestion 4\n\n\nQuestion 5",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>parallel</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Parallel</span>"
     ]
   }
 ]
