@@ -4,8 +4,7 @@ format: html
 date: last-modified
 execute: 
   warning: false
-
-  
+  cache: true
 ---
 
 ```{r}
@@ -34,6 +33,7 @@ foreach(i=1:100, .combine = "rbind") %do% {
 
 Sequential results:
 ```{r}
+#| freeze: auto
 n2 <- 50 # bootstrap sample size
 b2 <- 1000 # bootstraps per iteration
 iter <- 100 # iterations
@@ -66,7 +66,8 @@ stopCluster(cl)
 ```
 
 
-```{r, fig}
+```{r}
+#| freeze: auto
 rbind("Sequential"=t2_seq[1:3],
       "Parallel"=t2_par[1:3]) |>
   kable(
@@ -79,26 +80,83 @@ rbind("Sequential"=t2_seq[1:3],
 # Question 3
 
 ```{r}
-B3 <- 50
-iter3 <- 100
-sample3 <- rexp(B3,1)
+#| freeze: auto
+n3 <- 50
+B3 <- 10000
+alpha <- 0.05
+confidence <- (1-alpha)*100 # confidence in %
+
+lower_index <- B3*(alpha)/2
+upper_index <- B3-lower_index
+
+sample3 <- rexp(n3,1)
 
 cl <- makeCluster(cores) 
+
 registerDoParallel(cl)
-clusterExport(cl=cl, varlist=c("sample3","B3"))
+clusterExport(cl=cl, varlist=c("sample3","n3"))
 
 bootstrap3 <- foreach(
-  i=1:iter3, 
+  i=1:B3, 
   .combine=("rbind")
   ) %dopar% {
-    sample(x=sample3,size=B3,replace=T) |> 
+    sample(x=sample3,size=n3,replace=T) |> 
       sort()
-}
+} |> as.matrix()
 stopCluster(cl)
 
+means3 <- apply(bootstrap3,1,'mean')
+vars3  <- apply(bootstrap3,1,'var')
+
+original_mean3 <- mean(sample3)
+stat_mean3 <- mean(means3)
+stat_var3 <- var(means3)
+
+
+dist3 <- qnorm(alpha/2,0,1,lower.tail=F)*sqrt(vars3/n3)
+lCI <- means3 - dist3
+uCI <- means3 + dist3
+coverage <- sum(original_mean3>lCI & original_mean3<=uCI)/B3
 
 ```
+The coverage of the `r confidence`% confidence interval of means is `r round(coverage,3)`.
+
 
 # Question 4
+```{r}
+#| freeze: auto
+
+# cl<- makeCluster(cores)
+# registerDoParallel(cl)
+
+set.seed(1234)
+foreach(i=irnorm(5,0,1,count=3)) %do% {
+  max(i)
+} |> print()
+
+#stopCluster(cl)
+```
 
 # Question 5
+
+```{r}
+#| freeze: auto
+set.seed(1234)
+cl <- makeCluster(cores)
+
+
+# irnorm(n=5,mean=57,sd=3, count=100)
+# 
+# 
+# iterator <- irnorm(n=5,mean=57,sd=3,count=100)
+# nextElem(iterator)
+# 
+# parLapply(cl=cl, X=, fun="max", chunk.size=200)
+# 
+# iterator <- irnorm(n=5,mean=57,sd=3,count=100)
+# max(nextElem(iterator))
+# 
+# lapply(X=replicate(100,rnorm(5,57,3)),FUN='max')
+
+stopCluster(cl)
+```

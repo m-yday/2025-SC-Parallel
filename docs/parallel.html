@@ -227,44 +227,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">1.129</td>
-<td style="text-align: right;">1.519</td>
+<td style="text-align: right;">0.942</td>
+<td style="text-align: right;">0.718</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.087</td>
-<td style="text-align: right;">1.261</td>
+<td style="text-align: right;">1.185</td>
+<td style="text-align: right;">1.257</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1.005</td>
-<td style="text-align: right;">0.969</td>
+<td style="text-align: right;">0.945</td>
+<td style="text-align: right;">1.008</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.968</td>
-<td style="text-align: right;">0.930</td>
+<td style="text-align: right;">1.155</td>
+<td style="text-align: right;">1.134</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0.941</td>
-<td style="text-align: right;">1.251</td>
+<td style="text-align: right;">1.010</td>
+<td style="text-align: right;">1.661</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">0.882</td>
-<td style="text-align: right;">0.516</td>
+<td style="text-align: right;">1.068</td>
+<td style="text-align: right;">0.901</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0.972</td>
-<td style="text-align: right;">0.634</td>
+<td style="text-align: right;">1.026</td>
+<td style="text-align: right;">0.989</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.258</td>
-<td style="text-align: right;">1.776</td>
+<td style="text-align: right;">0.909</td>
+<td style="text-align: right;">0.529</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">0.867</td>
-<td style="text-align: right;">0.734</td>
+<td style="text-align: right;">0.991</td>
+<td style="text-align: right;">1.081</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1.055</td>
-<td style="text-align: right;">1.280</td>
+<td style="text-align: right;">0.974</td>
+<td style="text-align: right;">0.764</td>
 </tr>
 </tbody>
 </table>
@@ -274,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="question-2" class="level1">
 <h1>Question 2</h1>
 <p>Sequential results:</p>
-<div class="cell">
+<div class="cell" data-freeze="auto">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="dv">50</span> <span class="co"># bootstrap sample size</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co"># bootstraps per iteration</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>iter <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="co"># iterations</span></span>
@@ -305,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="co">#close parallel cluster</span></span>
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="fu">stopCluster</span>(cl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div class="cell" data-freeze="auto">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="st">"Sequential"</span><span class="ot">=</span>t2_seq[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>],</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>      <span class="st">"Parallel"</span><span class="ot">=</span>t2_par[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]) <span class="sc">|&gt;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(</span>
@@ -326,15 +326,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Sequential</td>
-<td style="text-align: right;">1.302</td>
-<td style="text-align: right;">0.014</td>
-<td style="text-align: right;">1.318</td>
+<td style="text-align: right;">1.403</td>
+<td style="text-align: right;">0.020</td>
+<td style="text-align: right;">1.427</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Parallel</td>
-<td style="text-align: right;">0.019</td>
+<td style="text-align: right;">0.020</td>
 <td style="text-align: right;">0.005</td>
-<td style="text-align: right;">0.173</td>
+<td style="text-align: right;">0.194</td>
 </tr>
 </tbody>
 </table>
@@ -343,12 +343,91 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="question-3" class="level1">
 <h1>Question 3</h1>
+<div class="cell" data-freeze="auto">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>n3 <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>B3 <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>confidence <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>alpha)<span class="sc">*</span><span class="dv">100</span> <span class="co"># confidence in %</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>lower_index <span class="ot">&lt;-</span> B3<span class="sc">*</span>(alpha)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>upper_index <span class="ot">&lt;-</span> B3<span class="sc">-</span>lower_index</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>sample3 <span class="ot">&lt;-</span> <span class="fu">rexp</span>(n3,<span class="dv">1</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>cl <span class="ot">&lt;-</span> <span class="fu">makeCluster</span>(cores) </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="fu">registerDoParallel</span>(cl)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">clusterExport</span>(<span class="at">cl=</span>cl, <span class="at">varlist=</span><span class="fu">c</span>(<span class="st">"sample3"</span>,<span class="st">"n3"</span>))</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>bootstrap3 <span class="ot">&lt;-</span> <span class="fu">foreach</span>(</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">i=</span><span class="dv">1</span><span class="sc">:</span>B3, </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">.combine=</span>(<span class="st">"rbind"</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%dopar%</span> {</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample</span>(<span class="at">x=</span>sample3,<span class="at">size=</span>n3,<span class="at">replace=</span>T) <span class="sc">|&gt;</span> </span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">sort</span>()</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>} <span class="sc">|&gt;</span> <span class="fu">as.matrix</span>()</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="fu">stopCluster</span>(cl)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>means3 <span class="ot">&lt;-</span> <span class="fu">apply</span>(bootstrap3,<span class="dv">1</span>,<span class="st">'mean'</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>vars3  <span class="ot">&lt;-</span> <span class="fu">apply</span>(bootstrap3,<span class="dv">1</span>,<span class="st">'var'</span>)</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>original_mean3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample3)</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>stat_mean3 <span class="ot">&lt;-</span> <span class="fu">mean</span>(means3)</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>stat_var3 <span class="ot">&lt;-</span> <span class="fu">var</span>(means3)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>dist3 <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(alpha<span class="sc">/</span><span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">lower.tail=</span>F)<span class="sc">*</span><span class="fu">sqrt</span>(vars3<span class="sc">/</span>n3)</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>lCI <span class="ot">&lt;-</span> means3 <span class="sc">-</span> dist3</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>uCI <span class="ot">&lt;-</span> means3 <span class="sc">+</span> dist3</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>coverage <span class="ot">&lt;-</span> <span class="fu">sum</span>(original_mean3<span class="sc">&gt;</span>lCI <span class="sc">&amp;</span> original_mean3<span class="sc">&lt;=</span>uCI)<span class="sc">/</span>B3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The coverage of the 95% confidence interval of means is 0.924.</p>
 </section>
 <section id="question-4" class="level1">
 <h1>Question 4</h1>
+<div class="cell" data-freeze="auto">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cl&lt;- makeCluster(cores)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># registerDoParallel(cl)</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">foreach</span>(<span class="at">i=</span><span class="fu">irnorm</span>(<span class="dv">5</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">count=</span><span class="dv">3</span>)) <span class="sc">%do%</span> {</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">max</span>(i)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>} <span class="sc">|&gt;</span> <span class="fu">print</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] 1.084441
+
+[[2]]
+[1] 0.5060559
+
+[[3]]
+[1] 0.9594941</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#stopCluster(cl)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="question-5" class="level1">
 <h1>Question 5</h1>
+<div class="cell" data-freeze="auto">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cl <span class="ot">&lt;-</span> <span class="fu">makeCluster</span>(cores)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># irnorm(n=5,mean=57,sd=3, count=100)</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># iterator &lt;- irnorm(n=5,mean=57,sd=3,count=100)</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># nextElem(iterator)</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># parLapply(cl=cl, X=, fun="max", chunk.size=200)</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># iterator &lt;- irnorm(n=5,mean=57,sd=3,count=100)</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># max(nextElem(iterator))</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># lapply(X=replicate(100,rnorm(5,57,3)),FUN='max')</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="fu">stopCluster</span>(cl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
